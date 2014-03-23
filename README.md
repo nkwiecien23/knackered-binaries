@@ -1,5 +1,3 @@
-asist-binaries
+Knackered-Binaries
 ==============
-
-This repository contains binaries that we may or may not use for ASIST competitions
 
