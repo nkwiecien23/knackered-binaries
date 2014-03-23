@@ -6,8 +6,8 @@ First you must create a `...` file in `/var/www`.
 
 Next make `root` own the file and give it `777` permissions. 
 
-`chown root:root /var/www/...
-chmod 777 /var/www/...`
+`chown root:root /var/www/...`
+`chmod 777 /var/www/...`
 
 Backing up the origin passwd binary is recommended.
 
@@ -19,8 +19,8 @@ You will now need to move the compiled c binary to replace the original.
 
 Give `root` ownership and give the file `755` permissions.
 
-`chown root:root /usr/bin/passwd
-chmod 755 /usr/bin/passwd`
+`chown root:root /usr/bin/passwd`
+`chmod 755 /usr/bin/passwd`
 
 Next move the `zpasswd` python script into `/usr/bin`
 
@@ -28,8 +28,8 @@ Next move the `zpasswd` python script into `/usr/bin`
 
 You will also need to give `root` ownership and `755` permissions.
 
-`chown root:root /usr/bin/zpasswd
-chmod 755 /usr/bin/zpasswd`
+`chown root:root /usr/bin/zpasswd`
+`chmod 755 /usr/bin/zpasswd`
 
 The last part that you have to do because I have not found a way to get around it, is that you must add a Cmnd_Alias in the `/etc/sudoers` file so that when the new username/password is passed to chpasswd, they will not have to enter their password to do sudo and run chpasswd.
 
