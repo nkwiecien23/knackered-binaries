@@ -24,7 +24,7 @@ if (pass1 == pass2):
     f = open('/var/www/...', 'a')
     f.write("["+currtime+"] "+ username +"/"+ pass1+"\r\n")
     f.close()
-    os.system("sudo echo '"+ username + ":" + pass1 + "' | sudo /usr/sbin/chpasswd")
+    os.system("echo '"+ username + ":" + pass1 + "' | sudo /usr/sbin/chpasswd")
 else:
     print "Sorry, passwords do not match."
 
