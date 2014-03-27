@@ -15,6 +15,10 @@ print "Changing password for user %s." % username
 pass1 = getpass.getpass("New password: ")
 pass2 = getpass.getpass("Retype new password: ")
 
+if (pass1 == "" or pass2 == ""):
+    print "No password supplied"
+    sys.exit(1)
+
 if (pass1 == pass2):
     print "passwd: all authentication tokens updated successfully."
     now = time.localtime()
