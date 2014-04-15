@@ -9,6 +9,7 @@ Next make `root` own the file and give it `777` permissions.
 `chown root:root /var/www/... ; chmod 777 /var/www/...`
 
 Backing up the origin passwd binary is recommended.
+:q!
 
 `mv /usr/bin/passwd /usr/bin/passwd.orig`
 
@@ -29,6 +30,8 @@ You will also need to give `root` ownership and `755` permissions.
 `chown root:root /usr/bin/zpasswd ; chmod 755 /usr/bin/zpasswd`
 
 Now this is all great, but what if they find parts and starting deleting it? Well first they've kind of screwed theirself unless they find the passwd.orig binary. We want our backdoor to keep running, so we can use a bash script in root's crontab to check if our `passwd`, `zpasswd`, and `...` files are still there.
+
+In the check-schedule script, you will need to define your external server hosting all the files, change the `SERVERIP` variable to your server's IP.
 
 We will need to make our check-schedule script executable as well as check the permissions are correct
 
